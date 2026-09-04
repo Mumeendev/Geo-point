@@ -1,0 +1,21 @@
+{
+  "name": "geo-point",
+  "version": "1.0.0",
+  "description": "Website and contact form backend for Geopoint Drilling Company Nigeria Ltd.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "nodemailer": "^8.0.11",
+    "pg": "^8.21.0"
+  }
+}
