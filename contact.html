@@ -60,15 +60,11 @@
 
         <section style="padding: 5rem 0;">
             <div class="container">
-                <div style="display: flex; flex-wrap: wrap; gap: 4rem;">
+                <div class="contact-layout" style="display: flex; flex-wrap: wrap; gap: 4rem;">
                     <!-- Contact Form -->
-                    <div style="flex: 2; min-width: 300px;">
+                    <div class="contact-form-panel" style="flex: 2; min-width: 300px;">
                         <h3 style="font-size: 1.8rem; color: var(--primary-blue); margin-bottom: 2rem;">Send Us a Message</h3>
-                        <form id="contactForm">
-                            <div class="honeypot" aria-hidden="true">
-                                <label for="website">Website</label>
-                                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
-                            </div>
+<form id="contactForm" action="https://formspree.io/f/xppzykwp" method="POST">
                             <div class="form-group">
                                 <label for="name">Full Name</label>
                                 <input type="text" id="name" name="name" placeholder="Enter your name" required>
@@ -78,13 +74,17 @@
                                 <input type="email" id="email" name="email" placeholder="Enter your email" required>
                             </div>
                             <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="08012345678" required>
+                            </div>
+                            <div class="form-group">
                                 <label for="service">Service Required</label>
                                 <select id="service" name="service">
-                                    <option value="drilling">Borehole Drilling</option>
-                                    <option value="survey">Geophysical Survey</option>
-                                    <option value="consultancy">Consultancy</option>
-                                    <option value="solar">Solar Pump Installation</option>
-                                    <option value="other">Other</option>
+                                    <option value="Borehole Drilling">Borehole Drilling</option>
+                                    <option value="Geophysical Survey">Geophysical Survey</option>
+                                    <option value="Consultancy">Consultancy</option>
+                                    <option value="Solar Pump Installation">Solar Pump Installation</option>
+                                    <option value="General Inquiry">General Inquiry</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -96,7 +96,7 @@
                     </div>
 
                     <!-- Contact Details -->
-                    <div style="flex: 1; min-width: 250px; background-color: var(--gray-bg); padding: 2rem; border-radius: 10px;">
+                    <div class="contact-details-panel" style="flex: 1; min-width: 250px; background-color: var(--gray-bg); padding: 2rem; border-radius: 10px;">
                         <h3 style="font-size: 1.5rem; color: var(--primary-blue); margin-bottom: 1.5rem;">Contact Information</h3>
                         
                         <div style="margin-bottom: 1.5rem;">

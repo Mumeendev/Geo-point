@@ -219,6 +219,13 @@ nav {
     max-width: 800px;
 }
 
+.hero-btns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
 /* Footer */
 footer {
     background-color: var(--dark-black);
@@ -279,6 +286,15 @@ footer {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
+    .container {
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
+    header {
+        padding: .75rem 0;
+    }
+
     .nav-links {
         display: none; /* Will be toggled by JS */
         flex-direction: column;
@@ -287,7 +303,7 @@ footer {
         left: 0;
         width: 100%;
         background-color: var(--primary-blue);
-        padding: 1rem 0;
+        padding: .5rem 0 1rem;
         text-align: center;
     }
 
@@ -296,7 +312,7 @@ footer {
     }
 
     .nav-links li {
-        margin: 1rem 0;
+        margin: .8rem 0;
     }
 
     .menu-toggle {
@@ -304,9 +320,130 @@ footer {
     }
 
     .hero-content h2 {
-        font-size: 2rem;
+        font-size: clamp(1.9rem, 8vw, 2.5rem);
+    }
+
+    .hero {
+        min-height: 560px;
+        height: 78svh;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-btns {
+        align-items: stretch;
+        flex-direction: column;
+        margin: 0 auto;
+        max-width: 280px;
+    }
+
+    .hero-btns .btn {
+        width: 100%;
+    }
+
+    .service-item {
+        gap: 1.5rem !important;
+        margin-bottom: 3rem !important;
+    }
+
+    .service-item > div {
+        min-width: 0 !important;
+        width: 100%;
+    }
+
+    .service-image-wrap {
+        height: 240px;
+    }
+
+    .detailed-services,
+    .team-section,
+    .video-section,
+    .feedback-section {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+
+    .contact-layout {
+        gap: 2rem !important;
+    }
+
+    .contact-form-panel,
+    .contact-details-panel {
+        min-width: 0 !important;
+        width: 100%;
+    }
+
+    .contact-details-panel {
+        padding: 1.5rem !important;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select,
+    .feedback-form input,
+    .feedback-form textarea {
+        font-size: 16px;
+    }
+
+    .feedback-layout {
+        gap: 1.5rem;
+    }
+
+    .feedback-form,
+    .feedback-comments {
+        padding: 1.25rem;
+    }
+
+    .image-credits {
+        padding: 0 0 1.5rem;
     }
 
     .team-grid, .video-grid, .feedback-layout { grid-template-columns: 1fr; }
     .feedback-comments { grid-column: auto; }
+}
+
+@media (max-width: 480px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .logo h1 {
+        font-size: 1.3rem;
+    }
+
+    .hero {
+        min-height: 510px;
+    }
+
+    .hero-content h2 {
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+
+    .service-image-wrap {
+        height: 210px;
+    }
+
+    main h2[style],
+    main h3[style] {
+        font-size: 1.55rem !important;
+        line-height: 1.25;
+    }
+
+    .btn {
+        min-height: 44px;
+        padding: .7rem 1rem;
+    }
+
+    .footer-grid {
+        gap: 1.5rem;
+    }
+
+    .footer-col p,
+    .footer-col a,
+    .image-credits {
+        overflow-wrap: anywhere;
+    }
 }

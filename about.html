@@ -112,12 +112,12 @@
                     <h2>Borehole Project Videos</h2>
                     <p>Showcase drilling, installation, and completed water projects here.</p>
                 </div>
-                <div class="video-grid">
+<div class="video-grid">
                     <div class="video-slot">
-                        <!-- Replace this panel with a video, for example: <video controls><source src="images/borehole-project-1.mp4" type="video/mp4"></video> -->
-                        <span>+</span>
-                        <h3>Add Borehole Video</h3>
-                        <p>Drilling or site-assessment footage</p>
+                        <video controls style="width: 100%; height: 100%; object-fit: cover;">
+                            <source src="imga/WhatsApp Video 2026-09-04 at 10.17.39 AM.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
                     <div class="video-slot">
                         <!-- Replace this panel with a video, for example: <video controls><source src="images/borehole-project-2.mp4" type="video/mp4"></video> -->
@@ -135,7 +135,7 @@
                     <h2>Rate Your Experience</h2>
                     <p>Tell us how we did. Your feedback helps us continue improving our service.</p>
                 </div>
-                <form id="feedbackForm" class="feedback-form">
+                <form id="feedbackForm" class="feedback-form" action="https://formspree.io/f/xppzykwp" method="POST">
                     <label for="feedbackName">Your name</label>
                     <input id="feedbackName" name="name" type="text" required>
                     <fieldset class="rating-fieldset">
