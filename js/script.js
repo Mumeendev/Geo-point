@@ -31,4 +31,46 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // -------------------------------------------------------
+    // Formspree visitor notification
+    // Alerts you when someone enters the website.
+    // -------------------------------------------------------
+    (function notifyFormspreeVisit() {
+        const VISITOR_FORMSPREE_ID = 'mnpqlrzp';
+
+        // Only notify once per browser session to avoid flooding.
+        // Remove the next two lines if you want an alert on EVERY page view.
+        if (sessionStorage.getItem('formspreeVisitNotified')) return;
+        sessionStorage.setItem('formspreeVisitNotified', 'true');
+
+        try {
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'https://formspree.io/f/' + VISITOR_FORMSPREE_ID;
+            form.style.display = 'none';
+
+            const fields = {
+                page_url: window.location.href,
+                visit_time: new Date().toISOString(),
+                user_agent: navigator.userAgent,
+                referrer: document.referrer || 'Direct/None',
+                screen_resolution: screen.width + 'x' + screen.height,
+                language: navigator.language || 'Unknown'
+            };
+
+            for (const [name, value] of Object.entries(fields)) {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = name;
+                input.value = value;
+                form.appendChild(input);
+            }
+
+            document.body.appendChild(form);
+            setTimeout(() => form.submit(), 0);
+        } catch (err) {
+            console.warn('Formspree visit notification failed:', err);
+        }
+    })();
 });

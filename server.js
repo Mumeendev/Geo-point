@@ -1,4 +1,4 @@
-const express = require('express');
+ const express = require('express');
 const path = require('path');
 require('dotenv').config();
 
@@ -7,7 +7,13 @@ function createApp({ allowedOrigins = [] } = {}) {
   const origins = new Set(allowedOrigins.filter(Boolean));
   app.disable('x-powered-by');
   app.use((req, res, next) => {
-    res.set({ 'Content-Security-Policy': "default-src 'self'; img-src 'self'; media-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'", 'Referrer-Policy': 'strict-origin-when-cross-origin', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'Permissions-Policy': 'camera=(), geolocation=(), microphone=()' });
+    res.set({
+      'Content-Security-Policy': "default-src 'self'; img-src 'self'; media-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; base-uri 'self'; form-action 'self' https://formspree.io; frame-ancestors 'none'",
+      'Referrer-Policy': 'strict-origin-when-cross-origin',
+      'X-Content-Type-Options': 'nosniff',
+      'X-Frame-Options': 'DENY',
+      'Permissions-Policy': 'camera=(), geolocation=(), microphone=()'
+    });
     const origin = req.get('origin');
     if (origin && origins.has(origin)) res.set('Access-Control-Allow-Origin', origin);
     next();
