@@ -35,21 +35,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // -------------------------------------------------------
     // Formspree visitor notification
     // Alerts you when someone enters the website.
+    // Uses fetch with keepalive so it doesn't create a
+    // browser history entry or navigate away from the site.
     // -------------------------------------------------------
     (function notifyFormspreeVisit() {
         const VISITOR_FORMSPREE_ID = 'mnpqlrzp';
 
-        // Only notify once per browser session to avoid flooding.
-        // Remove the next two lines if you want an alert on EVERY page view.
         if (sessionStorage.getItem('formspreeVisitNotified')) return;
         sessionStorage.setItem('formspreeVisitNotified', 'true');
 
         try {
-            const form = document.createElement('form');
-            form.method = 'POST';
-            form.action = 'https://formspree.io/f/' + VISITOR_FORMSPREE_ID;
-            form.style.display = 'none';
-
             const fields = {
                 page_url: window.location.href,
                 visit_time: new Date().toISOString(),
@@ -59,18 +54,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 language: navigator.language || 'Unknown'
             };
 
-            for (const [name, value] of Object.entries(fields)) {
-                const input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = name;
-                input.value = value;
-                form.appendChild(input);
-            }
-
-            document.body.appendChild(form);
-            setTimeout(() => form.submit(), 0);
+            fetch('https://formspree.io/f/' + VISITOR_FORMSPREE_ID, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(fields),
+                keepalive: true
+            }).catch(() => {
+                // Silently ignore network errors for the visit notification
+            });
         } catch (err) {
             console.warn('Formspree visit notification failed:', err);
         }
-    })();
+    }());
 });
